@@ -1,0 +1,43 @@
+{
+  "name": "note-to-self",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "jest": {
+    "moduleFileExtensions": ["js", "json", "es6"],
+    "testPathIgnorePatterns": ["config", "node_modules"],
+    "setupTestFrameworkScriptFile": "./tests/setup.js"
+  },
+  "scripts": {
+    "start-client": "node ./scripts/start.js",
+    "start-server": "nodemon server.js",
+    "build":
+      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && node ./scripts/build.js",
+    "test": "jest",
+    "test-watch": "jest --watchAll",
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "redis": "^2.8.0",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.4.3",
+    "concurrently": "^3.5.1",
+    "jest": "^22.4.3",
+    "supertest": "^3.1.0"
+  }
+}

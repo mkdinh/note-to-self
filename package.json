@@ -5,7 +5,7 @@
   "main": "server.js",
   "jest": {
     "moduleFileExtensions": ["js", "json", "es6"],
-    "testPathIgnorePatterns": ["config", "node_modules"],
+    "testPathIgnorePatterns": ["config", "node_modules", "ignore"],
     "setupTestFrameworkScriptFile": "./tests/setup.js"
   },
   "scripts": {

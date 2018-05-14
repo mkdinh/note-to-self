@@ -6,22 +6,14 @@ const userFactory = require("../factories/userFactory");
 class Request {
   static async connect() {
     // create custom request containing server
+    // instanate server
     let server;
 
     server = app.listen(process.env.PORT);
 
-    server.once("error", err => {
-      if (err.code === "EADDRINUSE") {
-        // port is currently in use
-        process.kill(process.pid);
-      }
-    });
-
     const test = supertest(app);
     const agent = supertest.agent(app);
     const request = new Request(app, server, test, agent);
-    // instanate server
-
     // return proxy for managing different methods
     return new Proxy(request, {
       get: function(target, property) {
@@ -66,10 +58,11 @@ class Request {
     // create user model to grab unique id
     const user = await userFactory();
     const { session, sig } = sessionFactory(user);
+    this._session = `session=${session}`;
+    this._sig = `session.sig=${sig}`;
+    this.testAgent.jar.saveCookie([this._session, this._sig]);
 
-    this.test.setCookie([`session=${session}`, `session.sig=${sig}`]);
-
-    // return this;
+    return this.testAgent;
   }
 }
 

@@ -13,7 +13,7 @@ describe("User Routes", () => {
   describe("When user logged in", () => {
     let user;
     beforeEach(async () => {
-      await request.login();
+      const res = await request.login();
       user = request._user;
       console.log(request._user);
     });

@@ -8,19 +8,19 @@ class Request {
     // create custom request containing server
     let server;
 
-    const test = supertest(app);
-    const agent = supertest.agent(app);
-    const request = new Request(app, server, test, agent);
-    // instanate server
-
     server = app.listen(process.env.PORT);
 
     server.once("error", async err => {
       if (err.code === "EADDRINUSE") {
         // port is currently in use
-        await request.disconnect();
+        await process.kill();
       }
     });
+
+    const test = supertest(app);
+    const agent = supertest.agent(app);
+    const request = new Request(app, server, test, agent);
+    // instanate server
 
     // return proxy for managing different methods
     return new Proxy(request, {

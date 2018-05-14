@@ -13,7 +13,7 @@
     "start-server": "nodemon server.js",
     "build":
       "NPM_CONFIG_PRODUCTION=false npm install --prefix client && node ./scripts/build.js",
-    "test": "jest",
+    "test": "jest --forceExit",
     "test-watch": "jest --watchAll",
     "start": "concurrently \"npm run start-server\" \"npm run start-client\" "
   },

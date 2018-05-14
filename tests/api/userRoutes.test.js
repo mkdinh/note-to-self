@@ -7,7 +7,7 @@ describe("User Routes", () => {
   });
 
   afterEach(async () => {
-    await request.disconnect();
+    // await request.disconnect();
   });
 
   describe("When user logged in", () => {
@@ -20,7 +20,8 @@ describe("User Routes", () => {
     test("GET /users/:id, expect to get back user info", () => {
       expect(true).toEqual(true);
     });
-    //   test("POST /users/", async () => {});
+
+    test("POST /users/", async () => {});
   });
   // describe("when user not logged in", () => {
   //   test("GET /users/:id, expect to return 401 error", async () => {});

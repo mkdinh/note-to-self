@@ -13,7 +13,7 @@ class Request {
     server.once("error", async err => {
       if (err.code === "EADDRINUSE") {
         // port is currently in use
-        await process.kill();
+        await process.kill(process.pid);
       }
     });
 

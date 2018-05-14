@@ -9,7 +9,7 @@ describe("Authentication", () => {
   });
 
   afterEach(async () => {
-    // await request.disconnect();
+    await request.disconnect();
   });
 
   //--------------------------------------------------------

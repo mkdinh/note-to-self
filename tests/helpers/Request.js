@@ -44,6 +44,7 @@ class Request {
 
   async login() {
     const user = await userFactory();
+    this._user = user;
     // this._user = user;
     return this.test.post("/api/auth/login").send({
       username: user.username,

@@ -30,8 +30,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cookieSession({
     name: "sessions",
-    secret: keys.SECRET,
-  }),
+    secret: keys.SECRET
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());

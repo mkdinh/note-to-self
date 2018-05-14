@@ -6,11 +6,21 @@ const userFactory = require("../factories/userFactory");
 class Request {
   static async connect() {
     // create custom request containing server
-    const server = app.listen(process.env.PORT);
+    let server;
+
     const test = supertest(app);
     const agent = supertest.agent(app);
     const request = new Request(app, server, test, agent);
-    // instanate
+    // instanate server
+
+    server = app.listen(process.env.PORT);
+
+    server.once("error", async err => {
+      if (err.code === "EADDRINUSE") {
+        // port is currently in use
+        await request.disconnect();
+      }
+    });
 
     // return proxy for managing different methods
     return new Proxy(request, {

@@ -17,7 +17,7 @@ class Request {
       get: function(target, property) {
         // console.log(target[property], property);
         return target[property] || test[property];
-      },
+      }
     });
   }
 
@@ -47,7 +47,7 @@ class Request {
     // this._user = user;
     return this.test.post("/api/auth/login").send({
       username: user.username,
-      password: user._password,
+      password: user._password
     });
   }
 

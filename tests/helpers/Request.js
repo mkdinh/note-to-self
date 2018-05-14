@@ -6,7 +6,7 @@ const userFactory = require("../factories/userFactory");
 class Request {
   static async connect() {
     // create custom request containing server
-    const server = app.listen(process.env.PORT);
+    const server = app.listen();
     const test = supertest(app);
     const agent = supertest.agent(app);
     const request = new Request(app, server, test, agent);

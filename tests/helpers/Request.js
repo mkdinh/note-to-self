@@ -10,7 +10,7 @@ class Request {
 
     server = app.listen(process.env.PORT);
 
-    server.once("error", async err => {
+    server.once("error", err => {
       if (err.code === "EADDRINUSE") {
         // port is currently in use
         process.kill(process.pid);

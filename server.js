@@ -46,7 +46,7 @@ if (["prod", "ci"].includes(process.env.NODE_ENV)) {
 }
 // Start server
 //--------------------------------------------------------
-if (!["test"].includes(process.env.NODE_ENV)) {
+if (!["test", "ci"].includes(process.env.NODE_ENV)) {
   const server = app.listen(PORT, () => {
     console.log("Listen to port: " + PORT);
     app.emit("started");
